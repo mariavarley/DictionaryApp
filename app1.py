@@ -5,13 +5,13 @@ data = json.load(open("data.json"))
 
 def translate(w):
 
-    w_low = w.lower()
-    found = get_close_matches(w_low, data, cutoff=0.8)
+    w = w.lower()
+    found = get_close_matches(w, data, cutoff=0.8)
 
     if w in data:
         return data[w]
-    elif w_low in data:
-        return data[w_low]
+    elif w.title() in data:
+        return data[w.title()]
     elif len(found) > 0:
         yn = input("Did you mean {}? Type Y for yes or N for no".format(found[0]))
         if yn == "Y":
